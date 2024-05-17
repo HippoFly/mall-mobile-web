@@ -67,9 +67,11 @@
 					password: this.password
 				}).then(response => {
 					let token = response.data.tokenHead+response.data.token;
+					let userId=response.data.userId;
 					uni.setStorageSync('token',token);
 					uni.setStorageSync('username',this.username);
 					uni.setStorageSync('password',this.password);
+					uni.setStorageSync('userId',userId);
 					memberInfo().then(response=>{
 						this.login(response.data);
 						uni.navigateBack();
